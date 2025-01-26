@@ -1,4 +1,7 @@
 /* s5 js */
+
+import * from './jquery.1.11.1.module.js';
+
 // # ScrollSpy (main nav)
 $(window).bind('scroll', function() {
 	var currentTop = $(window).scrollTop();
