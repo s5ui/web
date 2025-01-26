@@ -237,7 +237,8 @@ body, html {
               background-color: var(--s5-black);
             }
           }
-          
+
+          &.i-cta,
           &.i-contact {
             position:relative;
             margin-left: 10px;
@@ -1424,7 +1425,8 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endCo
               font-size: .9rem;
             }
           }
-          
+
+          > li.i-cta,
           > li.i-contact {
             position:absolute;
             top:0;
