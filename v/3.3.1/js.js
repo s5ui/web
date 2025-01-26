@@ -98,3 +98,60 @@ button.addEventListener("click", (event) => {
 
 	currentThemeSetting = newTheme;
 }); 
+
+
+// # Gallery modal
+$('#modalGallery').on($.modal.BEFORE_OPEN, function(event, modal) {
+	$(".blocker").toggleClass("blocker--full");
+});
+$('#modalGallery').on($.modal.AFTER_CLOSE, function(event, modal) {
+	$(".blocker").toggleClass("blocker--full");
+});
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+	showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+	showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+	var i;
+	var slides = document.getElementsByClassName("slide-main");
+	var dots = document.getElementsByClassName("slide-mini");
+	var captionText = document.getElementById("caption");
+	if (n > slides.length) {slideIndex = 1}
+	if (n < 1) {slideIndex = slides.length}
+	for (i = 0; i < slides.length; i++) {
+			slides[i].style.display = "none";
+	}
+	for (i = 0; i < dots.length; i++) {
+		dots[i].className = dots[i].className.replace(" active", "");
+	}
+	slides[slideIndex-1].style.display = "block";
+	dots[slideIndex-1].className += " active";
+	dots[slideIndex-1].scrollIntoView({
+		behavior: "smooth",
+		block: "center",
+		inline: "center"
+	});
+	captionText.innerHTML = dots[slideIndex-1].children[0].alt;
+}
+
+// # Show more
+function toggleShowMore(button) {
+	const content = button.previousElementSibling;
+	const isExpanded = content.classList.contains('is-expanded');
+
+	if (isExpanded) {
+		content.classList.remove('is-expanded');
+		button.textContent = 'Show more';
+	} else {
+		content.classList.add('is-expanded');
+		button.textContent = 'Show less';
+	}
+}
